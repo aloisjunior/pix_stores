@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Armazem extends Model
+class ItemTipo extends Model
 {
-    protected $table = 'armazem';
     //
 }

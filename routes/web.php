@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login/api', function (\Illuminate\Support\Facades\Request $request) {
+    return 'seu token';
+});
+
 Auth::routes();
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
