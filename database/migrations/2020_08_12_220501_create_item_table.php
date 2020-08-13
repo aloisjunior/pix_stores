@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemTipoTable extends Migration
+class CreateItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateItemTipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_tipo', function (Blueprint $table) {
+        Schema::create('item', function (Blueprint $table) {
             $table->id();
+            $table->string('descricao')->unique();
+            $table->integer('quantidade')->default(1);
+
+            $table->unsignedBigInteger('tipo_id');
+            $table->foreign('tipo_id')->references('id')->on('tipo');
+
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateItemTipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_tipo');
+        Schema::dropIfExists('item');
     }
 }

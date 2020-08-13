@@ -43,10 +43,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/armazem', function (Request $request) {
-    return \App\Armazem::all();
-});
+Route::resources([
+    'armazem' => 'ArmazemController',
+    'carga' => 'CargaController',
+    'item' => 'ItemController',
+    'itemTipo' => 'ItemTipoController',
+]);
 
-Route::middleware('auth:sanctum')->get('/armazem/{$id}/cargas', function (Request $request) {
-    return \App\Armazem::all();
-});
+
+//Route::middleware('auth:sanctum')->get('/armazem', function (Request $request) {
+//    return \App\Armazem::all();
+//});
+//
+//Route::middleware('auth:sanctum')->get('/armazem/{$id}/cargas', function (Request $request) {
+//    return \App\Armazem::all();
+//});

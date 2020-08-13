@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCargaTable extends Migration
+class CreateArmazemCargaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCargaTable extends Migration
      */
     public function up()
     {
-        Schema::create('carga', function (Blueprint $table) {
+        Schema::create('armazem_carga', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao')->unique();
+            $table->bigInteger('armazem_id')->unsigned()->nullable();
+            $table->bigInteger('carga_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCargaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carga');
+        Schema::dropIfExists('armazem_carga');
     }
 }

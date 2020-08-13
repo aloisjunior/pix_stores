@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
+use App\Tipo;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class TipoController extends Controller
 {
     protected $dataModel;
 
     /**
      * Display a listing of the resource.
      *
-     * @param Item $item
+     * @param Tipo $tipo
      */
 
-    public function __construct(Item $item)
+    public function __construct(Tipo $tipo)
     {
 
-        $this->dataModel = $item;
+        $this->dataModel = $tipo;
     }
 
     /**
@@ -34,9 +34,10 @@ class ItemController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
         return $this->dataModel->create($request->all());
     }
@@ -55,33 +56,33 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  \App\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show($tipo)
     {
-        return $this->dataModel->find($item);//
+        return $this->dataModel->find($tipo);//
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  \App\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit(Tipo $tipo)
     {
-        return $this->dataModel->find($item);//
+        return $this->dataModel->find($tipo);//
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Item  $item
+     * @param  \App\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, Tipo $tipo)
     {
         $reg = $this->dataModel->find($tipo)->first();
         return $reg->update($request->all());//
@@ -90,12 +91,13 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Item  $item
+     * @param Request $request
+     * @param \App\Tipo $tipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy(Request $request, Tipo $tipo)
     {
-        if ($this->dataModel->find($item)->first()->delete()){
+        if ($this->dataModel->find($tipo)->first()->delete()){
 //        if ($request->ajax()) {
             return response()->json('Registro excluído com sucesso', 200);
 //        }

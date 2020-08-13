@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemTable extends Migration
+class CreateCargaItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('item', function (Blueprint $table) {
+        Schema::create('carga_item', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao')->unique();
-            $table->integer('quantidade')->default(1);
+            $table->bigInteger('carga_id')->unsigned()->nullable();
+            $table->bigInteger('item_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item');
+        Schema::dropIfExists('carga_item');
     }
 }
